@@ -1,20 +1,19 @@
 package cz.csas.appmenu.applications;
 
-import cz.csas.appmenu.Application;
 import cz.csas.cscore.client.rest.CallbackWebApi;
 import cz.csas.cscore.webapi.InstanceResource;
 import cz.csas.cscore.webapi.ResourceUtils;
 import cz.csas.cscore.webapi.WebApiClient;
-import cz.csas.cscore.webapi.apiquery.GetEnabled;
-import cz.csas.cscore.webapi.apiquery.PaginatedListEnabled;
+import cz.csas.cscore.webapi.apiquery.ListEnabled;
 
 /**
+ * The type Application resource. This resource provides list of applications in flat structure.
+ *
  * @author Jan Hauser <jan.hauser@applifting.cz>
  * @since 14.05.16.
  */
 public class ApplicationResource extends InstanceResource implements
-        GetEnabled<cz.csas.appmenu.Application>,
-        PaginatedListEnabled<ApplicationListParameters, ApplicationListResponse> {
+        ListEnabled<ApplicationListResponse> {
     /**
      * Instantiates a new Instance resource.
      *
@@ -26,16 +25,23 @@ public class ApplicationResource extends InstanceResource implements
         super(id, basePath, client);
     }
 
+    /**
+     * Get list of applications.
+     *
+     * @param callback the callback of type CallbackWebApi<T>
+     */
     @Override
-    public void get(CallbackWebApi<cz.csas.appmenu.Application> callback) {
-        ResourceUtils.callGet(this, null, null, null, Application.class, callback);
+    public void list(CallbackWebApi<ApplicationListResponse> callback) {
+        ResourceUtils.callList(this, "android", new ApplicationsRawDataTransform(), ApplicationListResponse.class, callback);
     }
 
-    @Override
-    public void list(ApplicationListParameters parameters,
-                     CallbackWebApi<ApplicationListResponse> callback) {
-        ResourceUtils.callPaginatedList(this, parameters,
-                null, ApplicationListResponse.class, callback);
+    /**
+     * Get nodes resource
+     *
+     * @return the nodes resource
+     */
+    public NodesResource getNodesResource() {
+        return new NodesResource(appendPathWith("android"), getClient());
     }
 }
 

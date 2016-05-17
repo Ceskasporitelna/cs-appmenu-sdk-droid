@@ -5,6 +5,8 @@ import cz.csas.cscore.client.WebApiConfiguration;
 import cz.csas.cscore.webapi.WebApiClient;
 
 /**
+ * The type AppMenu client. This Client provides {@link ApplicationsResource}.
+ *
  * @author Jan Hauser <jan.hauser@applifting.cz>
  * @since 13.05.16.
  */
@@ -12,7 +14,7 @@ public class AppMenuClient extends WebApiClient {
 
 
     /**
-     * Instantiates a new places client.
+     * Instantiates a new AppMenu client.
      *
      * @param webApiConfiguration the webApiConfiguration as a settings parameter of the client
      */
@@ -22,7 +24,7 @@ public class AppMenuClient extends WebApiClient {
 
     @Override
     protected String getClientPath() {
-        return "/webapi/api/v2";
+        return "/api/v2";
     }
 
     private String getBasePath() {
@@ -30,12 +32,12 @@ public class AppMenuClient extends WebApiClient {
     }
 
     /**
-     * Get the places resource.
+     * Get the Applications resource.
      * See also {@link ApplicationsResource}
      *
-     * @return the places resource
+     * @return the applications resource
      */
-    public ApplicationsResource getAppMenuResource() {
+    public ApplicationsResource getApplicationsResource() {
         return new ApplicationsResource(getBasePath(), this);
     }
 

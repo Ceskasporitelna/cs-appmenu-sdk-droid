@@ -1,3 +1,3 @@
 [submodule "lib/cs-core-sdk-droid"]
 	path = lib/cs-core-sdk-droid
-	url = git@github.com:Ceskasporiteln/cs-core-sdk-droid.git
+url=https://github.com/Ceskasporitelna/cs-core-sdk-droid.git

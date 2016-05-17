@@ -5,6 +5,9 @@ import cz.csas.cscore.webapi.WebApiClient;
 import cz.csas.cscore.webapi.apiquery.HasInstanceResource;
 
 /**
+ * The type Applications resource. This resource provides access to {@link ApplicationResource}
+ * with given identifier.
+ *
  * @author Jan Hauser <jan.hauser@applifting.cz>
  * @since 13.05.16.
  */
@@ -19,7 +22,11 @@ public class ApplicationsResource extends Resource implements HasInstanceResourc
         super(basePath, client);
     }
 
-
+    /**
+     * Get new Application Resource based on given identifier
+     * @param id the identifier of application
+     * @return the application resource
+     */
     @Override
     public ApplicationResource withId(Object id) {
         return new ApplicationResource(id, getBasePath(), getClient());
