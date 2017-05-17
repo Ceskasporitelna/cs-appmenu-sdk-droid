@@ -14,34 +14,32 @@ This SDK allows you to list applications of Česká spořitelna a.s. [AppMenu AP
 **IMPORTANT!** You need to have your SSH keys registered with the GitHub since this repository is private.
 
 ## Install
-You can install CSPlacesSDK using the following git and gradle settings.
+You can install CSAppMenuSDK using the following gradle settings.
 
-1. Navigate to your git configured project repository and process this command to add CSAppMenu as a submodule:
-```
-git submodule add https://github.com/Ceskasporitelna/cs-appmenu-sdk-droid.git your_lib_folder/cs-appmenu-sdk-droid
-```
-
-2. Insert these two lines into your project settings.gradle file to include your submodules:
+1. Check your project build.gradle file that it contains `JCenter` repository:
 ```gradle
-include ':core'
-project (':core').projectDir = new File(settingsDir, 'your_lib_folder/cs-appmenu-sdk-droid/lib/cs-core-sdk-droid/core')
-include ':appmenu'
-project (':appmenu').projectDir = new File(settingsDir, 'your_lib_folder/cs-appmenu-sdk-droid/appmenu')
+    allprojects {
+        repositories {
+            ...
+            jcenter()
+            ...
+        }
+    }
 ```
 
-3. Insert this line into your module build.gradle file to compile your submodules:
+2. Insert these lines into your module build.gradle file to compile CSAppMenuSDK and CoreSDK (change x.y.z to the version you want to use):
 ```gradle
-dependencies {
-...
-compile project(':core')
-compile project(':appmenu')
-...
-}
+    dependencies {
+        ...
+        compile 'cz.csas:cs-core-sdk:x.y.z@aar'
+        compile 'cz.csas:cs-appmenu-sdk:x.y.z@aar'
+        ...
+    }
 ```
 
 # Usage
 
-After you've installed the SDK using git submodules you will be able to use the module in your project.
+After you've installed the SDK you will be able to use the module in your project.
 Also CSAppMenuSDK has dependency to CSCoreSDK, you will be able to use it as well.
 
 **See [CoreSDK](https://github.com/Ceskasporitelna/cs-core-sdk-droid)**
@@ -52,7 +50,7 @@ Before using CoreSDK in your application, you need to initialize it by providing
 ```java
 
 // Set your WebApi key
-CoreSDK.getInstance().useWebApiKey( "YourApiKey" )
+CoreSDK.getInstance().useWebApiKey( "YourApiKey" );
 // Initialize appmenu
 AppMenu.getInstance().useAppMenu(String appId, String categoryKey, Context context);
 // Obtain your AppMenuManager
