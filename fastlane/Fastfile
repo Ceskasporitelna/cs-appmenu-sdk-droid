@@ -25,7 +25,6 @@ platform :android do
 
   desc "Runs all the tests"
   lane :test do
-    gradle(task: "clean")
     output = sh ("cd .. &&  sh ./cs-appmenu-sdk-droid-tests.sh true")
     if !output.include?("ANDROID TESTS SUCCESSFUL")
       UI.user_error!("Android tests failed. See gradle output above.")
@@ -33,6 +32,7 @@ platform :android do
   end
 
   lane :ci do
+    gradle(task: "clean")
     test
     rocket
   end
@@ -127,8 +127,8 @@ platform :android do
     # Commit files
     #######################
 
-    git_add(path: ["./CHANGELOG.md", "./version.properties"])
-    git_commit(path: ["./CHANGELOG.md", "./version.properties"], message: "Version Bump")
+    git_add(path: ["./CHANGELOG.md", "./version.properties", "./descriptor.json"])
+    git_commit(path: ["./CHANGELOG.md", "./version.properties", "./descriptor.json"], message: "Version Bump")
     add_git_tag(tag: "v#{new_version}", sign: true)
 
 

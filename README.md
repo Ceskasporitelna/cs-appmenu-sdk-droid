@@ -11,7 +11,6 @@ This SDK allows you to list applications of Česká spořitelna a.s. [AppMenu AP
 - Android Studio 1.5+
 
 # AppMenu SDK Installation
-**IMPORTANT!** You need to have your SSH keys registered with the GitHub since this repository is private.
 
 ## Install
 You can install CSAppMenuSDK using the following gradle settings.

@@ -53,7 +53,7 @@ install {
                 packaging 'aar'
 
                 // Add your description here
-                // name 'cz.csas.core'
+                name 'cs-appmenu-sdk'
                 description = 'AppMenu SDK project powered by Ceska Sporitelna a.s.'
                 url 'https://github.com/Ceskasporitelna/cs-appmenu-sdk-droid'
 
