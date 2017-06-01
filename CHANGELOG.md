@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2017-06-01
+
 ## Changed
 
 - CSAppMenuSDK released to JCenter
