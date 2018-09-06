@@ -56,7 +56,7 @@ public abstract class AppMenuTest {
         CoreSDK.getInstance().useLogger(new LogManagerImpl("FOOK_TAG", LogLevel.DETAILED_DEBUG));
         mWebApiConfiguration = new WebApiConfigurationImpl(WEB_API_KEY_TEST, new Environment(TEST_BASE_URL, TEST_BASE_URL_OAUTH, false), "cs-CZ", null);
         mXJudgeSessionHeader = UUID.randomUUID().toString();
-        mJudgeClient = new JudgeClient(TEST_BASE_URL_JUDGE);
+        mJudgeClient = new JudgeClient(TEST_BASE_URL_JUDGE, new LogManagerImpl("TEST", LogLevel.DETAILED_DEBUG));
         mAppMenuClient = AppMenu.getInstance().init(mWebApiConfiguration).getAppMenuClient();
         mAppMenuManager = new AppMenuManagerImpl("queueing", "QUEUEING", InstrumentationRegistry.getTargetContext());
         ((AppMenuManagerImpl) mAppMenuManager).setAppMenuClient(mAppMenuClient);

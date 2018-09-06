@@ -2,9 +2,13 @@
 
 ## [Unreleased]
 
+### Fixed
+- (TOOLING) Update tooling to remove potential vulnerability
+
+
 ## [1.1.0] - 2017-06-01
 
-## Changed
+### Changed
 
 - CSAppMenuSDK released to JCenter
 
